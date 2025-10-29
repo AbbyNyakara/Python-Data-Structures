@@ -28,13 +28,15 @@ class LinkedList:
         if self.head is None:
             self.head = new_node
             self.tail = new_node
-
         else:
             self.tail.next = new_node
             self.tail = new_node
         self.length += 1
 
-    def pop(self):
+    def pop_last(self):
+        """
+        
+        """
         if self.length == 0:
             return None  # Nothing to pop
         else:
@@ -57,24 +59,67 @@ class LinkedList:
         """
         Add a new node at the beginning of a linkedList
         """
-        if self.head is None:  # if the list is empty
-            self.append(value)
-        else:
+        new_node = Node(value)
+        if self.length == 0:  # if the list is empty
+            self.head = new_node
+            self.tail = new_node
+        else:  # If list has something in it:
             temp = self.head
-            new_node = Node(value)
             self.head = new_node
             self.head.next = temp
-            self.length += 1
+        self.length += 1
+
+    def pop_first(self):
+        """
+        Pops the first node from the linkedList
+        """
+        # If it is empty:
+        # if there is only 1 node in
+        if self.length == 0:
+            return None
+
+        temp = self.head
+        self.head = self.head.next
+        temp.next = None  # to disconnect it from the chain: ie. its pointing to none/nothing
+
+        self.length -= 1
+        if self.length == 0:  # when we have
+            self.tail = None
+        print(f"The head value is {self.head.value}")
+        return temp
+
+    def get(self, index):
+        """
+        Returns the node at a certain index
+        Case 1 - Empty LinkedList
+        Case 2 - Can fetch the index # The indx will start from 0:
+        Case 3 - The index is out of range: # if I have reached the tail 
+        """
+        # Case 1: Empty List , if it is outside the range:
+        if index < 0 or index >= self.length:
+            return None
+        temp = self.head
+        for _ in range(index):
+            temp = temp.next
+        return temp.value
+
+    def set_value(self, index, value):
+        """
+        Sets the value of a certain Node in a linkedList. 
+        """
+        temp = self.get(
+            index)  # This will return a Node ( with next and Value or None)
+
+        if temp:  # if tremp is not none:
+            temp.value = value
+            return True
 
 
-list = LinkedList(2)
-list.pop()
-list.prepend(45)
+list = LinkedList(11)
+list.append(3)
+list.append(23)
+list.append(7)
+list.set_value(1, 4)
 
 
-print(list.head.value)
-
-# print(list.pop())
-# print(list.pop())
-# print(list.pop())
-# print(list.pop())
+list.print_list()
