@@ -107,12 +107,56 @@ class LinkedList:
         """
         Sets the value of a certain Node in a linkedList. 
         """
-        temp = self.get(
-            index)  # This will return a Node ( with next and Value or None)
+        temp = self.get(index)
+        # This will return a Node ( with next and Value or None)
 
         if temp:  # if tremp is not none:
             temp.value = value
             return True
+
+    def remove_node(self, index):
+        """Removes a node at a certain index"""
+        if index < 0 or index >= self.length:  # In the case that the index is out of range:
+            return None
+
+        if index == 0:
+            self.pop_first()
+
+        if index == self.length - 1:
+            self.pop_last()
+
+        prev = self.get(index-1)
+        temp = prev.next
+
+        prev.next = temp.next
+        temp.next = None
+
+        self.length -= 1
+
+        return temp
+
+    def reverse(self):
+        if self.length == 0:
+            return None
+        if self.length == 1:
+            pass  # Do nothing:
+
+        # Switch them
+        temp = self.head
+        self.head = self.tail
+        self.tail = temp
+
+        while temp.next is not None:
+            temp = temp.next  # Until I get to the last Node:
+
+        self.head = temp  # when temp.next is none
+        self.tail = self.head
+
+
+
+
+
+
 
 
 list = LinkedList(11)
