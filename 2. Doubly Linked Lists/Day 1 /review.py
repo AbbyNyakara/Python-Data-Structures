@@ -106,19 +106,62 @@ class DoubleLinkedList:
                     temp = temp.next
             else:
                 temp = self.tail  # start from the tail
-                for _ in range(self.length-1, temp, -1):
+                for _ in range(self.length-1, index, -1):
                     temp = temp.prev
             return temp
         
+    def set_value(self, index, value):
+        '''
+        It sets the value of a node at a certain index
         
+        :param self: Description
+        :param index: Index in which to set/ change the value the value
+        :param value: the new value
+        '''
+        target_node = self.get(
+            index)  # This can be none if the index is out of range:
+        if target_node:  # is not None
+            target_node.value = value
+
+            return True
+        return False
+
+    def insert(self, index, value):
+        '''
+        Insert a Node at a specific index with a certain value
+        
+        :param self: Description
+        :param index: the index to insert at
+        :param value: The value of the node
+        '''
+        new_node = Node(value)
+
+        if index == 0:
+            self.prepend(new_node)
+        if index == self.length:
+            self.append(new_node)
+
+        prev = self.get(index-1)  # Could result to None
+
+        # The node before the actual position and the actual position
+        if prev is not None and prev.next is not None:
+            target_node = prev.next
+            new_node.next = target_node
+            prev.next = new_node
+            target_node.prev = new_node
+            new_node.prev = prev
+        self.length += 1
 
 
+
+
+    
 linked_list = DoubleLinkedList(1)
 linked_list.append(2)
 linked_list.append(3)
 linked_list.append(4)
 linked_list.append(5)
-print(linked_list.get(2))
+linked_list.insert(6, 7)
 
 
-# linked_list.print_list()
+linked_list.print_list()
