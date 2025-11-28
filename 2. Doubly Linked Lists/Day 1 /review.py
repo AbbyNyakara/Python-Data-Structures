@@ -135,6 +135,8 @@ class DoubleLinkedList:
         :param value: The value of the node
         '''
         new_node = Node(value)
+        if index < 0 or index > self.length:
+            return False
 
         if index == 0:
             self.prepend(new_node)
@@ -151,6 +153,47 @@ class DoubleLinkedList:
             target_node.prev = new_node
             new_node.prev = prev
         self.length += 1
+        return True
+
+    # def remove(self, index):
+    #     '''
+    #     Removes a node from a LinkedList at a certain index
+
+    #     :param self: Description
+    #     :param index: Description
+    #     '''
+
+    #     if index < 0 or index >= self.length:
+    #         return None
+    #     if index == 0:
+    #         return self.pop_first()
+    #     if index == self.length-1:
+    #         return self.pop()
+    #     else:
+    #         prev = self.get(index-1)  # Retrieves the Node at the prev index
+    #         target = self.get(index)
+    #         after = target.next
+    #         target.next = None
+    #         target.prev = None
+    #         after.prev = None
+    #         after.prev = prev
+    #         prev.next = None
+    #         prev.next = after
+    def remove(self, index):
+        if index < 0 or index >= self.length:
+            return None
+        if index == 0:
+            return self.pop_first()
+        if index == self.length - 1:
+            return self.pop()
+        temp = self.get(index)
+
+        temp.next.prev = temp.prev
+        temp.prev.next = temp.next
+        temp.next = None
+        temp.prev = None
+
+        return temp
 
 
 
@@ -161,7 +204,7 @@ linked_list.append(2)
 linked_list.append(3)
 linked_list.append(4)
 linked_list.append(5)
-linked_list.insert(6, 7)
+linked_list.remove(3)
 
 
 linked_list.print_list()
