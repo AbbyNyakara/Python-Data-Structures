@@ -139,6 +139,7 @@ class DoubleLinkedList:
             return False
 
         if index == 0:
+            # This is wrong! append and prepend accept a value and not a new_node
             self.prepend(new_node)
         if index == self.length:
             self.append(new_node)
