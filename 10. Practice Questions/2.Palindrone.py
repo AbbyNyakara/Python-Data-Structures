@@ -48,7 +48,7 @@ class DoublyLinkedList:
             print(current.value)
             current = current.next
 
-    def is_palindrome(self):
+    def is_palindrome(self): # 2n
         forward = self.head
         backward = self.tail
 
@@ -68,8 +68,23 @@ class DoublyLinkedList:
             return True
         return False
 
+    def palindrome_optimized(self): # n 
+        if self.length == 1:  # for 1 node
+            return True
 
-    
+        forward_node = self.head
+        backward_node = self.tail
+
+        for _ in range(self.length//2):
+            if forward_node.value != backward_node.value:
+                return False
+            forward_node = forward_node.next
+            backward_node = backward_node.prev
+        return True
+
+
+
+
 
 dll = DoublyLinkedList(1)
 dll.append(2)
