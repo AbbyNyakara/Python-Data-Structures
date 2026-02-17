@@ -33,14 +33,12 @@ class Queue:
     def dequeue(self):
         if self.length in (0, 1): # empty or just 1 node
             return None
-        
         else: 
             temp = self.first
+
             self.first = temp.next
             temp.next = None
         self.length -= 1
-        
-
 
 queue = Queue(1)
 queue.enqueue(2)
