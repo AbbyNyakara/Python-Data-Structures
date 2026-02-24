@@ -3,18 +3,34 @@ class Stack:
         self.stack_list = []
 
     def print_stack(self):
-        for i in reversed(self.stack_list):
-            print(i)
+        for i in range(len(self.stack_list)-1, -1, -1):
+            print(self.stack_list[i])
 
     def push(self, value):
         return self.stack_list.append(value)
     
     def pop(self):
-        if len(self.stack_list) == 0:
-            return None
-        else:
-            return self.stack_list.pop()
+        return self.stack_list.pop()
+    
+    def is_empty(self):
+        return len(self.stack_list) == 0
+    
 
+def reverse_string(string):
+    new_stack = Stack()
+
+    for char in string:
+        new_stack.push(char)
+    
+    reversed_list = []
+
+    while not new_stack.is_empty():
+        reversed_list.append(new_stack.pop())
+
+    return "".join(reversed_list)
+
+
+print(reverse_string(""))
 
     
 
