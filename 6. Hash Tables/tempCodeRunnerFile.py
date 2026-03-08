@@ -1,0 +1,1 @@
+print(first_non_repeating_char("abby"))
