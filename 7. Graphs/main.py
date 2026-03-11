@@ -28,9 +28,18 @@ class Graph:
                 self.adj_list[vertex2].remove(vertex1)
             except ValueError:
                 pass
+            return True
+        return False
+
+    def remove_vertex(self, vertex):
+        if vertex in self.adj_list:
+            for attached_vertex in self.adj_list[vertex]: #self.adj_list[vertex] is the values [B, C]
+                self.adj_list[attached_vertex].remove(vertex)
+                del self.adj_list[vertex] # remove the actual vertex
                 return True
         return False
 
+                
 
 my_graph = Graph()
 my_graph.add_vertex("A")
@@ -43,4 +52,5 @@ my_graph.add_edge("B", "C")
 my_graph.print_graph()
 
 my_graph.remove_edge("A", "C")  # Incase the
+my_graph.remove_vertex('A')
 my_graph.print_graph()
