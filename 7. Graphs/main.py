@@ -35,8 +35,8 @@ class Graph:
         if vertex in self.adj_list:
             for attached_vertex in self.adj_list[vertex]: #self.adj_list[vertex] is the values [B, C]
                 self.adj_list[attached_vertex].remove(vertex)
-                del self.adj_list[vertex] # remove the actual vertex
-                return True
+            del self.adj_list[vertex] # remove the actual vertex
+            return True
         return False
 
                 
