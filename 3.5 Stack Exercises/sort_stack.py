@@ -74,17 +74,31 @@ class Stack:
 def sort_stack(old_stack):
     sorted_stack = Stack()
 
-    while not old_stack.is_empty():
-        temp = old_stack.pop()  # get the top element from the unsorted stack
-        peek_value = sorted_stack.peek()  # gets the top element from the sorted stack
+    while not old_stack.is_empty:
+        temp = old_stack.pop()
 
-        while not sorted_stack.is_empty():  # while the sorted stack is not empty
-            if temp > peek_value:
-                sorted_stack.pop()
-                old_stack.push(peek_value)
-            else:
-                sorted_stack.push(temp)
+        while not sorted_stack.is_empty() and sorted_stack.peek() > temp:
+            old_stack.push(sorted_stack.pop())
 
-    return sorted_stack
+        sorted_stack.push(temp)
 
+    while not sorted_stack.is_empty():
+        old_stack.push(sorted_stack.pop())
+
+
+"""
+def sort_stack(stack):
+    additional_stack = Stack()
+ 
+    while not stack.is_empty():
+        temp = stack.pop()
+ 
+        while not additional_stack.is_empty() and additional_stack.peek() > temp:
+            stack.push(additional_stack.pop())
+ 
+        additional_stack.push(temp)
+ 
+    while not additional_stack.is_empty():
+        stack.push(additional_stack.pop())
+"""
 
