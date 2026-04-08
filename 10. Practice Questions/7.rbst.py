@@ -46,6 +46,30 @@ class RecursiveBinarySearchTree:
 
         return False
 
+    def __r_contains(self, current_node, value):
+        if current_node == None:
+            return False
+
+        if value == current_node.value:
+            return True
+
+        if value < current_node.value:
+            return self.__r_contains(current_node.left, value)
+
+        if value > current_node.value:
+            return self.__r_contains(current_node.right, value)
+
+    def r_contains(self, value):
+        return self.__r_contains(self.root, value)
+    
+
+    def __r_insert(self, current_node, value):
+        pass
+
+
+    def r_insert(self, value):
+        self.__r_insert(self.root, value)
+
 
 my_tree = RecursiveBinarySearchTree()
 my_tree.insert(23)
@@ -54,4 +78,4 @@ my_tree.insert(12)
 
 print(my_tree.root.right.value)
 
-print(my_tree.contains(23))
+print(my_tree.r_contains(11))
