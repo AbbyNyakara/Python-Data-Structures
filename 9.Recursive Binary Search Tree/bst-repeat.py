@@ -49,6 +49,10 @@ class BinarySearchTree:
             else: # value == temp.value
                 return True
         return False # got to temp = None and the value 
+    
+
+    def delete_value(self, value):
+        pass
 
 
 
