@@ -111,18 +111,16 @@ class LinkedList:
     def get(self, index):
         if index < 0 or index > self.length - 1:
             return False
-
+        if index == 0:
+            return self.head.value
+        if index == self.length - 1:
+            return self.tail.value
         else:
-            if index == 0:
-                return self.head.value
-            elif index == self.length - 1:
-                return self.tail.value
-            else:
-                temp = self.head
-                for _ in range(index):
-                    temp = temp.next
+            temp = self.head
+            for _ in range(index):
+                temp = temp.next
 
-                return temp.value
+            return temp.value
 
 
 
