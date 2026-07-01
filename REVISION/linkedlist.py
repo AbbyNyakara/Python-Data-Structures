@@ -87,10 +87,50 @@ class LinkedList:
 
         return True
 
+    def pop_first(self):
+        '''
+        Removes the first node from the linkedlist and returns it 
+        '''
+        if self.length == 0:
+            return None
+
+        if self.length == 1:
+            temp = self.head
+            self.head = None
+            self.tail = None
+            self.length -= 1
+            return temp
+
+        else:
+            temp = self.head
+            self.head = temp.next
+            temp.next = None
+            self.length -= 1
+            return temp
+
+    def get(self, index):
+        if index < 0 or index > self.length - 1:
+            return False
+
+        else:
+            if index == 0:
+                return self.head.value
+            elif index == self.length - 1:
+                return self.tail.value
+            else:
+                temp = self.head
+                for _ in range(index):
+                    temp = temp.next
+
+                return temp.value
+
+
+
+
 
 linkedlist = LinkedList(1)
 linkedlist.append(12)
 linkedlist.append(17)
-linkedlist.prepend(34)
-linkedlist.prepend(2)
 linkedlist.print_list()
+
+
