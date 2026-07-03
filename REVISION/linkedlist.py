@@ -145,7 +145,6 @@ class LinkedList:
             
         if index == self.length:
             return self.append(value)
-            
 
         # Create a new node
         new_node = Node(value)
@@ -164,13 +163,41 @@ class LinkedList:
 
         return True
 
+    def remove(self, index):
+        if index < 0 or index > self.length - 1:
+            return None
+        
+        if index == 0:
+            return self.pop_first()
+        
+        if index == self.length -1:
+            return self.pop()
+        
+        # Removing from the middle: 
+
+        before = None
+        temp = self.head
+
+        for _ in range(index):
+            before = temp
+            temp = temp.next 
+
+        before.next = temp.next 
+        temp.next = None
+
+        self.length -= 1
+
 linkedlist = LinkedList(1)
 linkedlist.append(12)
 linkedlist.append(17)
 linkedlist.append(5)
 linkedlist.print_list()
-linkedlist.insert(5, 78)
+linkedlist.insert(2, 78)
 print("After insert")
+linkedlist.print_list()
+linkedlist.remove(5)
+print("After remove")
+
 linkedlist.print_list()
 
 
