@@ -26,6 +26,7 @@ class LinkedList:
             self.tail = new_node
 
         self.length += 1
+        return True
 
     def print_list(self):
         temp = self.head
@@ -83,8 +84,8 @@ class LinkedList:
             temp = self.head
             new_node.next = temp
             self.head = new_node
-            self.length += 1
-
+        
+        self.length += 1
         return True
 
     def pop_first(self):
@@ -110,25 +111,66 @@ class LinkedList:
 
     def get(self, index):
         if index < 0 or index > self.length - 1:
-            return False
+            return None
         if index == 0:
-            return self.head.value
+            return self.head
         if index == self.length - 1:
-            return self.tail.value
+            return self.tail
         else:
             temp = self.head
             for _ in range(index):
                 temp = temp.next
 
-            return temp.value
+            return temp
+        
 
+    def set(self, index, value):
+        """
+        Sets the value of a node at a certain index
+        """
+        selected_node = self.get(index) #this could result in none if index is not valid
 
+        if selected_node is not None:
+            selected_node.value = value
+            return True
+        return False
+    
 
+    def insert(self, index, value):
+        if index < 0 or index > self.length:
+            return None
+        
+        if index == 0:
+            return self.prepend(value)
+            
+        if index == self.length:
+            return self.append(value)
+            
 
+        # Create a new node
+        new_node = Node(value)
+
+        before = None
+        temp = self.head
+
+        for _ in range(index):
+            before = temp
+            temp = temp.next
+
+        new_node.next = temp
+        before.next = new_node
+
+        self.length += 1
+
+        return True
 
 linkedlist = LinkedList(1)
 linkedlist.append(12)
 linkedlist.append(17)
+linkedlist.append(5)
+linkedlist.print_list()
+linkedlist.insert(5, 78)
+print("After insert")
 linkedlist.print_list()
 
 
