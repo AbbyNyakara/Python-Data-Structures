@@ -187,6 +187,13 @@ class LinkedList:
 
         self.length -= 1
 
+
+    def reverse(self):
+        if self.length == 0 or self.length == 1:
+            return None
+        
+        
+
 linkedlist = LinkedList(1)
 linkedlist.append(12)
 linkedlist.append(17)
