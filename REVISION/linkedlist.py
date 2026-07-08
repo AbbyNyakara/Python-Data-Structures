@@ -189,22 +189,35 @@ class LinkedList:
 
 
     def reverse(self):
-        if self.length == 0 or self.length == 1:
+        if self.length == 0:
+            return None
+        if self.length == 1:
             return None
         
+        before = None
+        temp = self.head
+        self.head = self.tail
+        self.tail = temp
+
+        while temp is not None:
+            after = temp.next
+
+            temp.next = before
+            before = temp
+            temp = after
+
+        return True
+
         
 
 linkedlist = LinkedList(1)
+linkedlist.pop()
 linkedlist.append(12)
 linkedlist.append(17)
 linkedlist.append(5)
 linkedlist.print_list()
-linkedlist.insert(2, 78)
-print("After insert")
-linkedlist.print_list()
-linkedlist.remove(5)
-print("After remove")
-
+linkedlist.reverse()
+print("After Reversal")
 linkedlist.print_list()
 
 
