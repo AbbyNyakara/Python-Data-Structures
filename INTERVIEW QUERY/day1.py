@@ -51,18 +51,18 @@ class BinarySearchTree:
       
             if(key < currentNode.key):
                 if(currentNode.left is None):
-                    currentNode.left = newNode;
-                    newNode.parent = currentNode;
+                    currentNode.left = newNode
+                    newNode.parent = currentNode
                     break
                 else:
-                    currentNode = currentNode.left;
+                    currentNode = currentNode.left
             else:
                 if(currentNode.right is None):
-                    currentNode.right = newNode;
-                    newNode.parent = currentNode;
+                    currentNode.right = newNode
+                    newNode.parent = currentNode
                     break
                 else:
-                    currentNode = currentNode.right;
+                    currentNode = currentNode.right
 
     # Return a reference to a node in the BST by its key.
     # Use this method when you need a node to test your
@@ -84,6 +84,7 @@ class BinarySearchTree:
 ######################################### 
 # Driver program to test above function #
 #########################################
+
 
 # Create a Binary Search Tree
 bst = BinarySearchTree()
