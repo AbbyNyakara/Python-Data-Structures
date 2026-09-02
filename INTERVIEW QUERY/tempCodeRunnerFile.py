@@ -1,0 +1,1 @@
+print(hash.set_item("abby", 32))
