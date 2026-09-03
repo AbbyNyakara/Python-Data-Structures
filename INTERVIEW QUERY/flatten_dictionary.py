@@ -38,6 +38,19 @@ class HashTable:
                 else:
                     return None
 
+    def keys(self):
+        """
+        Returns all the keys in the hash table 
+        """
+        all_keys = []
+
+        for i in range(len(self.data_map)):
+            if self.data_map[i] is not None:
+                for j in self.data_map[i]:
+                    all_keys.append(j[0])
+
+        return all_keys
+
 
 
 
@@ -58,3 +71,5 @@ print(hash.set_item("chris", 34))
 
 print("Test the get item hash")
 print(hash.get_item("abby"))
+print("Return the keys")
+print(hash.keys())
