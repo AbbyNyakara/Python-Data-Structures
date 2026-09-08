@@ -10,7 +10,7 @@
 #             if num2_value in arr[num1_index+ 1:]:
 #                 num2_index = arr.index(num2_value, num1_index + 1)
 #                 output_arr.extend([num1_index, num2_index])
-#                 return output_arr
+#                 return [num1_index, num2_index]
 #             else: 
 #                 num1_index += 1
 #         return output_arr
@@ -24,6 +24,32 @@ def two_sum(arr, target):
 
     return []
 
+def two_sum(arr, target):
+    my_dict = {}
+
+    for i in range(len(arr)):
+        difference = target - arr[i]
+
+        # Check if the number is already in the dict
+        if difference in my_dict:
+            return [i, my_dict[difference]]
+
+        else:
+            my_dict[arr[i]] = i
+
+        i += 1
+
+    # if there is no match
+    return []
+
+# [4, 0]
+# [3, 1]
+# [3, 0]
+# [3, 1]
+# []
+# [3, 2]
+# [1, 0]
+# []
 
 # print(two_sum(my_list, sum))
 print(two_sum([5, 1, 7, 2, 5, 3], 10))  
