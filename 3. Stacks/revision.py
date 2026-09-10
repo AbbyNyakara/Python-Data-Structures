@@ -3,7 +3,6 @@ class Node:
         self.value = value
         self.next = None
 
-
 class Stack:
     """
     Can be implemented as a list or as a linked list 
@@ -52,11 +51,7 @@ class Stack:
             temp.next = None 
 
         self.height -= 1
-        return temp.value
-
-
-
-
+        return temp
 
 
 my_stack = Stack(1)
