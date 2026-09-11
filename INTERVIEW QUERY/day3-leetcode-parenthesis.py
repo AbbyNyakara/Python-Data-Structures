@@ -87,4 +87,11 @@ class Stack:
             print(temp.value)
             temp=temp.next
 
+    def peek_top(self):
+        return self.top.value
+
+    def is_empty(self):
+        return self.length == 0 or self.top is None
+
+
 
