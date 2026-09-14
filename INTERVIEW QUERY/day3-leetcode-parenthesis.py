@@ -93,5 +93,26 @@ class Stack:
     def is_empty(self):
         return self.length == 0 or self.top is None
 
+## PROBLEM APPROACH 
 
+class Solution:
+    def isValid(self, s: str) -> bool:
+        my_stack = []
 
+        parenthesis_dictionary = {
+            '(': ')', 
+            '{': '}', 
+            '[': ']'
+        }
+
+        for bracket in s: 
+            if bracket in parenthesis_dictionary: # if its in the keys: i.e an opening bracket
+                my_stack.append(bracket)
+            elif bracket in parenthesis_dictionary.values(): # a closing bracket: 
+                #check the last element
+                if my_stack and parenthesis_dictionary[my_stack[-1]] == bracket: #Check that stack is not empty
+                    my_stack.pop()
+                else:
+                    return False
+
+        return len(my_stack) == 0
