@@ -109,7 +109,7 @@ class Solution:
             if bracket in parenthesis_dictionary: # if its in the keys: i.e an opening bracket
                 my_stack.append(bracket)
             elif bracket in parenthesis_dictionary.values(): # a closing bracket: 
-                #check the last element
+                #check the last element/ element on the top of the stack 
                 if my_stack and parenthesis_dictionary[my_stack[-1]] == bracket: #Check that stack is not empty
                     my_stack.pop()
                 else:
