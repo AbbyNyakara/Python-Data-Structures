@@ -22,15 +22,7 @@ def mergeTwoLists(self, list1: ListNode | None, list2: ListNode | None) -> ListN
         return []
     # Compare list1 and list2 (at the head), start with the node with the least
     # If there are equal, start with list1 (or list2) Doesnt really matter
-    while list1 is not None and list2 is not None:
-        if list1.val > list2.val:
-            list1 = list1.next
-        elif list2.val > list1.val:
-            list2 = list2.next
-        else: # If they are equal
-            list1.next = list2
-
-
+    
 
     # Move the pointer along, comparing the numbers, and changing the next pointer 
 
@@ -40,5 +32,5 @@ def mergeTwoLists(self, list1: ListNode | None, list2: ListNode | None) -> ListN
 
 
 
-    while list1.next is Not N
+    
 
